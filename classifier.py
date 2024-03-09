@@ -5,7 +5,7 @@ from fastai.vision.widgets import *
 # Function to load the model
 @st.cache(allow_output_mutation=True)
 def load_model():
-    return load_learner("s23386_model_image.pkl")
+    return load_learner("s23386_image_model_NEW.pkl")
     #https://github.com/s23386/Image_Classification_task5_suml/blob/main/s23386_model_image.pkl
 
 # Define Streamlit app
