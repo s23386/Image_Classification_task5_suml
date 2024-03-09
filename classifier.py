@@ -28,7 +28,7 @@ def main():
         pred, _, probs = model.predict(img)
         
         # Display the prediction
-        st.write(f"Prediction: {pred}; Probability: {probs[pred]:.4f}")
+        st.write(f"Prediction: {pred}; Probability: {probs[pred_idx]:.4f}")
 
 # Run the Streamlit app
 if __name__ == '__main__':
