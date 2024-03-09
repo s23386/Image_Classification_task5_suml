@@ -1,3 +1,4 @@
+# Import necessary libraries
 import streamlit as st
 from fastai.vision.all import *
 
@@ -24,10 +25,10 @@ def main():
         st.image(img, caption='Uploaded Image', use_column_width=True)
         
         # Make prediction
-        pred, pred_idx, probs = model.predict(img)
+        pred, _, probs = model.predict(img)
         
         # Display the prediction
-        st.write(f"Prediction: {pred}; Probability: {probs[pred_idx]:.4f}")
+        st.write(f"Prediction: {pred}; Probability: {probs[pred]:.4f}")
 
 # Run the Streamlit app
 if __name__ == '__main__':
