@@ -1,12 +1,13 @@
+# Import necessary libraries
 import streamlit as st
-from PIL import Image
 from fastai.vision.all import *
 
-# Load the model
+# Function to load the model
 @st.cache(allow_output_mutation=True)
 def load_model():
     return load_learner("s23386_image_model.pkl")
 
+# Define Streamlit app
 def main():
     # Load the model
     model = load_model()
@@ -20,12 +21,12 @@ def main():
     
     if uploaded_file is not None:
         # Display the uploaded image
-        img = Image.open(uploaded_file)
+        img = PILImage.create(uploaded_file)
         st.image(img, caption='Uploaded Image', use_column_width=True)
         
         # Make prediction
         pred, pred_idx, probs = model.predict(img)
-        
+
         # Convert prediction probability to percentage format with four decimal places
         pred_percentage = f"{probs[pred_idx].item() * 100:.4f}%"
         
