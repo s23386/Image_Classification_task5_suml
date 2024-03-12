@@ -21,14 +21,17 @@ def main():
     
     if uploaded_file is not None:
         # Display the uploaded image
-        img = PILImage.create(uploaded_file)
+        img = PILImage.open(uploaded_file)
         st.image(img, caption='Uploaded Image', use_column_width=True)
         
         # Make prediction
         pred, pred_idx, probs = model.predict(img)
         
+        # Convert prediction probability to percentage format with four decimal places
+        pred_percentage = f"{probs[pred_idx].item() * 100:.4f}%"
+        
         # Display the prediction
-        st.write(f"Prediction: {pred}; Probability: {probs[pred_idx]:.4f}")
+        st.write(f"Prediction: {pred}; Probability: {pred_percentage}")
 
 # Run the Streamlit app
 if __name__ == '__main__':
