@@ -1,13 +1,12 @@
-# Import necessary libraries
 import streamlit as st
+from PIL import Image
 from fastai.vision.all import *
 
-# Function to load the model
+# Load the model
 @st.cache(allow_output_mutation=True)
 def load_model():
     return load_learner("s23386_image_model.pkl")
 
-# Define Streamlit app
 def main():
     # Load the model
     model = load_model()
@@ -21,7 +20,7 @@ def main():
     
     if uploaded_file is not None:
         # Display the uploaded image
-        img = PILImage.open(uploaded_file)
+        img = Image.open(uploaded_file)
         st.image(img, caption='Uploaded Image', use_column_width=True)
         
         # Make prediction
